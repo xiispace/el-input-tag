@@ -1,0 +1,22 @@
+{
+  "name": "el-input-tag",
+  "version": "1.0.0",
+  "description": "A input tag editor component of Element UI",
+  "main": "index.js",
+  "scripts": {
+  },
+  "peerDependencies": {
+    "vue": "^2.4.0",
+    "element-ui": "^2.0.0"
+  },
+  "keywords": [
+    "vue",
+    "component",
+    "element",
+    "tag",
+    "inputtag",
+    "input"
+  ],
+  "author": "xiispace",
+  "license": "MIT"
+}
