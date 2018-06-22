@@ -1,8 +1,8 @@
 {
   "name": "el-input-tag",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A input tag editor component of Element UI",
-  "main": "index.js",
+  "main": "src/index.js",
   "scripts": {
   },
   "peerDependencies": {
@@ -17,6 +17,10 @@
     "inputtag",
     "input"
   ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xiispace/el-input-tag.git"
+},
   "author": "xiispace",
   "license": "MIT"
 }
