@@ -1,20 +1,20 @@
 <template>
-  <div class="input-tag-wrapper" @click="foucusInput">
-  <el-tag
-    :key="tag"
-    v-for="(tag, idx) in innerTags"
-    closable
-    :disable-transitions="false"
-    @close="remove(idx)">
-    {{tag}}
-  </el-tag>
-  <input
-    class="tag-input"
-    v-model="newTag"
-    id="tag-input"
-    @keydown.delete.stop = "removeLastTag"
-    @keydown = "addNew"
-    @blur = "addNew"/>
+  <div class="el-input-tag input-tag-wrapper" @click="foucusTagInput">
+    <el-tag
+      :key="tag"
+      v-for="(tag, idx) in innerTags"
+      :closable="!readOnly"
+      :disable-transitions="false"
+      @close="remove(idx)">
+      {{tag}}
+    </el-tag>
+    <input
+      v-if="!readOnly"
+      class="tag-input"
+      v-model="newTag"
+      @keydown.delete.stop = "removeLastTag"
+      @keydown = "addNew"
+      @blur = "addNew"/>
   </div>
 </template>
 
@@ -29,6 +29,10 @@ export default {
     addTagOnKeys: {
       type: Array,
       default: () => [13, 188, 9]
+    },
+    readOnly: {
+      type: Boolean,
+      default: false
     }
   },
   data () {
@@ -43,8 +47,12 @@ export default {
     }
   },
   methods: {
-    foucusInput () {
-      document.getElementById('tag-input').focus()
+    foucusTagInput () {
+      if (this.readOnly || !this.$el.querySelector('.tag-input')) {
+        return
+      } else {
+        this.$el.querySelector('.tag-input').focus()
+      }
     },
     addNew (e) {
       if (e && (!this.addTagOnKeys.includes(e.keyCode)) && (e.type !== 'blur')) {
