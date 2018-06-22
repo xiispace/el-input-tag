@@ -4,6 +4,7 @@ Element UI 标签输入组件。
 [README in English](README.md)
 
 ## 使用
+`npm/cnpm i el-input-tag --save`
 - 全局注册
 ``` js
 import ElInputTag from 'el-input-tag'
