@@ -121,6 +121,10 @@ export default {
     transition: border-color .2s cubic-bezier(.645,.045,.355,1);
     width: 100%;
   }
+  
+  .el-tag {
+    margin-right: 4px;
+  }
 
   .tag-input {
     background: transparent;

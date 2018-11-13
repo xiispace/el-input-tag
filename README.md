@@ -1,5 +1,8 @@
 # El Input Tag
 a input tag editor component of Element UI
+<p align="center">
+  <img src="demo.gif" alt="Logo"/>
+</p>
 
 [中文 README](README-zh_CN.md)
 
@@ -17,17 +20,18 @@ Vue.use(ElInputTag)
 import {ElInputTag} from 'el-input-tag'
 
 export default {
-    components: {ElinputTag}
+    components: {ElInputTag}
 }
 ```
 
 ## Sample
 ``` html
 <div>
-     <el-form :model="form" ref="form" inline>
-    <el-form-item>
-      <el-input-tag v-model="form.tags"></el-input-tag>
-    </el-form-item>
-  </el-form>
+    <el-form :model="form" ref="form">
+      <el-form-item>
+        <el-input-tag v-model="form.tags"></el-input-tag>
+      </el-form-item>
+    </el-form>
 </div>
+```
 ```
