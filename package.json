@@ -1,6 +1,6 @@
 {
   "name": "el-input-tag",
-  "version": "1.0.3",
+  "version": "1.1.0",
   "description": "A input tag editor component of Element UI",
   "main": "src/index.js",
   "scripts": {

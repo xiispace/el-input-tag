@@ -6,6 +6,12 @@ a input tag editor component of Element UI
 
 [中文 README](README-zh_CN.md)
 
+## Props
+| Attribute | Description               | Type    | Accepted Values       | Default |
+| --------- | ------------------------- | ------- | --------------------- | ------- |
+| size      | size of input             | string  | mini / small / medium |         |
+| readonly  | whether input is readonly | boolean |                       | false   |
+
 ## Usage
 `npm/cnpm i el-input-tag --save`
 - global

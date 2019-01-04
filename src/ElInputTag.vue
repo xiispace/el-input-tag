@@ -1,8 +1,12 @@
 <template>
-  <div class="el-input-tag input-tag-wrapper" @click="foucusTagInput">
+  <div
+    class="el-input-tag input-tag-wrapper"
+    :class="[size ? 'el-input-tag--' + size : '']"
+    @click="foucusTagInput">
     <el-tag
-      :key="tag"
       v-for="(tag, idx) in innerTags"
+      :key="tag"
+      :size="size"
       :closable="!readOnly"
       :disable-transitions="false"
       @close="remove(idx)">
@@ -10,6 +14,7 @@
     </el-tag>
     <input
       v-if="!readOnly"
+      :size="size"
       class="tag-input"
       v-model="newTag"
       @keydown.delete.stop = "removeLastTag"
@@ -33,7 +38,8 @@ export default {
     readOnly: {
       type: Boolean,
       default: false
-    }
+    },
+    size: String
   },
   data () {
     return {
@@ -134,6 +140,21 @@ export default {
     outline: none;
     padding-left: 0;
     width: 100px;
+  }
+
+  .el-input-tag--mini .tag-input{
+    height: 28px;
+    line-height: 28px;
+  }
+
+  .el-input-tag--small .tag-input{
+    height: 32px;
+    line-height: 32px;
+  }
+
+  .el-input-tag--medium .tag-input{
+    height: 36px;
+    line-height: 36px;
   }
 
 </style>

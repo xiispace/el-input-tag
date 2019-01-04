@@ -6,6 +6,13 @@ Element UI 标签输入组件。
 
 [README in English](README.md)
 
+## 属性
+| 参数     | 说明     | 类型    | 可选值                | 默认值 |
+| -------- | -------- | ------- | --------------------- | ------ |
+| size     | 尺寸     | string  | mini / small / medium |        |
+| readonly | 是否只读 | boolean |                       | false  |
+
+
 ## 使用
 `npm/cnpm i el-input-tag --save`
 - 全局注册
