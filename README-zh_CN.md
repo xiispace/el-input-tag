@@ -40,3 +40,6 @@ export default {
     </el-form>
 </div>
 ```
+
+## 注意
+使用前加上el Tag组件, 基于Tag组件封装;
