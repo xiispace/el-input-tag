@@ -143,17 +143,17 @@ export default {
     width: 100px;
   }
 
-  .el-input-tag--mini .tag-input{
+  .el-input-tag--mini{
     height: 28px;
     line-height: 28px;
   }
 
-  .el-input-tag--small .tag-input{
+  .el-input-tag--small{
     height: 32px;
     line-height: 32px;
   }
 
-  .el-input-tag--medium .tag-input{
+  .el-input-tag--medium{
     height: 36px;
     line-height: 36px;
   }

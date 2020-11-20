@@ -44,4 +44,6 @@ export default {
     </el-form>
 </div>
 ```
-```
+
+## attention
+Add el Tag Component before use
