@@ -45,5 +45,5 @@ export default {
 </div>
 ```
 
-## attention
+## Attention
 Add el Tag Component before use

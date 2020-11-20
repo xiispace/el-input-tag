@@ -15,7 +15,6 @@
     </el-tag>
     <input
       v-if="!readOnly"
-      :size="size"
       class="tag-input"
       v-model="newTag"
       @keydown.delete.stop = "removeLastTag"
@@ -56,7 +55,7 @@ export default {
   methods: {
     foucusTagInput () {
       if (this.readOnly || !this.$el.querySelector('.tag-input')) {
-        return
+
       } else {
         this.$el.querySelector('.tag-input').focus()
       }
@@ -128,7 +127,6 @@ export default {
     transition: border-color .2s cubic-bezier(.645,.045,.355,1);
     width: 100%;
   }
-  
   .el-tag {
     margin-right: 4px;
   }
@@ -136,24 +134,27 @@ export default {
   .tag-input {
     background: transparent;
     border: 0;
-    font-size: 14px;
-    height: 40px;
+    font-size: inherit;
     outline: none;
     padding-left: 0;
     width: 100px;
   }
-
-  .el-input-tag--mini{
+  .el-input-tag {
+    height: 40px;
+    line-height: 40px;
+  }
+  .el-input-tag--mini {
     height: 28px;
     line-height: 28px;
+    font-size: 12px;
   }
 
-  .el-input-tag--small{
+  .el-input-tag--small {
     height: 32px;
     line-height: 32px;
   }
 
-  .el-input-tag--medium{
+  .el-input-tag--medium {
     height: 36px;
     line-height: 36px;
   }
