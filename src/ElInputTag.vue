@@ -111,7 +111,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
   .input-tag-wrapper {
     position: relative;
     font-size: 14px;
@@ -140,8 +140,7 @@ export default {
     width: 100px;
   }
   .el-input-tag {
-    height: 40px;
-    line-height: 40px;
+    min-height: 44px;
   }
   .el-input-tag--mini {
     height: 28px;
