@@ -111,7 +111,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style>
   .input-tag-wrapper {
     position: relative;
     font-size: 14px;
