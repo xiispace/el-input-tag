@@ -2,7 +2,7 @@
   <div
     class="el-input-tag input-tag-wrapper"
     :class="[size ? 'el-input-tag--' + size : '']"
-    @click="foucusTagInput">
+    @click="focusTagInput">
     <el-tag
       v-for="(tag, idx) in innerTags"
       v-bind="$attrs"
@@ -53,7 +53,7 @@ export default {
     }
   },
   methods: {
-    foucusTagInput () {
+    focusTagInput () {
       if (this.readOnly || !this.$el.querySelector('.tag-input')) {
 
       } else {
@@ -68,19 +68,19 @@ export default {
         e.stopPropagation()
         e.preventDefault()
       }
-      let addSuucess = false
+      let addSuccess = false
       if (this.newTag.includes(',')) {
         this.newTag.split(',').forEach(item => {
           if (this.addTag(item.trim())) {
-            addSuucess = true
+            addSuccess = true
           }
         })
       } else {
         if (this.addTag(this.newTag.trim())) {
-          addSuucess = true
+          addSuccess = true
         }
       }
-      if (addSuucess) {
+      if (addSuccess) {
         this.tagChange()
         this.newTag = ''
       }
@@ -140,8 +140,7 @@ export default {
     width: 100px;
   }
   .el-input-tag {
-    height: 40px;
-    line-height: 40px;
+    min-height: 44px;
   }
   .el-input-tag--mini {
     height: 28px;
