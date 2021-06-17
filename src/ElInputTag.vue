@@ -140,21 +140,21 @@ export default {
     width: 100px;
   }
   .el-input-tag {
-    min-height: 44px;
+    min-height: 42px;
   }
   .el-input-tag--mini {
-    height: 28px;
+    min-height: 28px;
     line-height: 28px;
     font-size: 12px;
   }
 
   .el-input-tag--small {
-    height: 32px;
+    min-height: 32px;
     line-height: 32px;
   }
 
   .el-input-tag--medium {
-    height: 36px;
+    min-height: 36px;
     line-height: 36px;
   }
 
