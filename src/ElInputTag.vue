@@ -112,6 +112,9 @@ export default {
 </script>
 
 <style scoped>
+  .el-form-item.is-error .el-input-tag {
+      border-color: #f56c6c;
+  }
   .input-tag-wrapper {
     position: relative;
     font-size: 14px;
