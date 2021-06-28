@@ -16,7 +16,8 @@
     <input
       v-if="!readOnly"
       class="tag-input"
-      v-model="newTag"
+      @input="inputTag"
+      :value="newTag"
       @keydown.delete.stop = "removeLastTag"
       @keydown = "addNew"
       @blur = "addNew"/>
@@ -55,10 +56,13 @@ export default {
   methods: {
     focusTagInput () {
       if (this.readOnly || !this.$el.querySelector('.tag-input')) {
-
+        return
       } else {
         this.$el.querySelector('.tag-input').focus()
       }
+    },
+    inputTag(ev) {
+        this.newTag = ev.target.value
     },
     addNew (e) {
       if (e && (!this.addTagOnKeys.includes(e.keyCode)) && (e.type !== 'blur')) {
