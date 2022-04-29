@@ -16,6 +16,7 @@
     <input
       v-if="!readOnly"
       class="tag-input"
+      :placeholder="placeholder"
       @input="inputTag"
       :value="newTag"
       @keydown.delete.stop = "removeLastTag"
@@ -40,7 +41,8 @@ export default {
       type: Boolean,
       default: false
     },
-    size: String
+    size: String,
+    placeholder: String,
   },
   data () {
     return {
