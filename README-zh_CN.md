@@ -67,14 +67,9 @@ export default {
 | ---- | ---- | ---- | ------ | ------ |
 | value / v-model | 标签数组 | array | | `[]` |
 | size | 输入框尺寸 | string | mini / small / medium | |
-| read-only | 是否只读。也兼容 `readonly` 写法。 | boolean | | `false` |
-| disabled | 是否禁用 | boolean | | `false` |
+| read-only | 是否只读 | boolean | | `false` |
 | placeholder | 输入框占位文本 | string | | |
-| aria-label | 内部 input 的无障碍标签 | string | | `Tag input` |
 | add-tag-on-keys | 触发新增标签的 keyCode 数组 | array | | `[13, 188, 9]` |
-| separator | 批量输入时的分隔符 | string / RegExp | | `,` |
-| allow-duplicate | 是否允许重复标签 | boolean | | `false` |
-| max | 最大标签数量，`0` 表示不限制 | number | | `0` |
 | transform-tag | 保存前转换标签值的函数 | function | | `tag => tag` |
 | validate-tag | 保存前校验标签值的函数 | function | | `() => true` |
 
@@ -85,7 +80,6 @@ export default {
 | 事件名 | 说明 | 参数 |
 | ------ | ---- | ---- |
 | input | 用于 `v-model` 更新 | `tags` |
-| change | 标签数组变化时触发 | `tags` |
 | invalid | `validate-tag` 拒绝标签，或 `transform-tag` 返回 `null` / `undefined` 时触发 | `tag` |
 
 ## 示例
@@ -108,12 +102,6 @@ export default {
   :validate-tag="tag => /^\d+$/.test(tag)"
   :transform-tag="tag => Number(tag)"
 />
-```
-
-### 限制标签数量
-
-```html
-<el-input-tag v-model="tags" :max="5" />
 ```
 
 ## 注意

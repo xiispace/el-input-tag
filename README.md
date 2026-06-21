@@ -67,14 +67,9 @@ export default {
 | --------- | ----------- | ---- | --------------- | ------- |
 | value / v-model | Tag list | array | | `[]` |
 | size | Input size | string | mini / small / medium | |
-| read-only | Whether input is readonly. `readonly` is also supported for compatibility. | boolean | | `false` |
-| disabled | Whether input is disabled | boolean | | `false` |
+| read-only | Whether input is readonly | boolean | | `false` |
 | placeholder | Input placeholder | string | | |
-| aria-label | Accessible label for the inner input | string | | `Tag input` |
 | add-tag-on-keys | Key codes that add the current tag | array | | `[13, 188, 9]` |
-| separator | Separator used to split pasted or typed input | string / RegExp | | `,` |
-| allow-duplicate | Whether duplicate tags are allowed | boolean | | `false` |
-| max | Maximum number of tags. `0` means unlimited. | number | | `0` |
 | transform-tag | Function used to transform a normalized string before saving | function | | `tag => tag` |
 | validate-tag | Function used to validate a normalized string before saving | function | | `() => true` |
 
@@ -85,7 +80,6 @@ Element UI tag attributes such as `type`, `hit`, `color`, and `effect` are passe
 | Event | Description | Parameters |
 | ----- | ----------- | ---------- |
 | input | Emitted for `v-model` updates | `tags` |
-| change | Emitted when tags change | `tags` |
 | invalid | Emitted when `validate-tag` rejects a tag or `transform-tag` returns `null` / `undefined` | `tag` |
 
 ## Examples
@@ -111,12 +105,6 @@ Use `validate-tag` and `transform-tag` when you need a number array instead of a
 ```
 
 Typing `1,2,3` will emit `[1, 2, 3]`.
-
-### Limit tag count
-
-```html
-<el-input-tag v-model="tags" :max="5" />
-```
 
 ## Notes
 

@@ -3,7 +3,6 @@ import ElInputTag from '../../src/ElInputTag.vue'
 
 const stubs = {
   'el-tag': {
-    props: ['closable'],
     template: '<span class="el-tag"><slot /></span>'
   }
 }
@@ -26,7 +25,6 @@ describe('ElInputTag', () => {
     wrapper.vm.addNew({ type: 'keydown', keyCode: 13, stopPropagation: jest.fn(), preventDefault: jest.fn() })
 
     expect(wrapper.emitted().input[0][0]).toEqual(['alpha'])
-    expect(wrapper.emitted().change[0][0]).toEqual(['alpha'])
     expect(wrapper.vm.newTag).toBe('')
   })
 
@@ -67,17 +65,6 @@ describe('ElInputTag', () => {
     wrapper.vm.removeLastTag()
 
     expect(wrapper.emitted().input).toBeUndefined()
-  })
-
-  it('respects readonly and disabled states', () => {
-    const readonlyWrapper = mountComponent({ value: ['alpha'], readOnly: true })
-    const disabledWrapper = mountComponent({ value: ['alpha'], disabled: true })
-
-    readonlyWrapper.vm.remove(0)
-    disabledWrapper.vm.remove(0)
-
-    expect(readonlyWrapper.emitted().input).toBeUndefined()
-    expect(disabledWrapper.emitted().input).toBeUndefined()
   })
 
   it('does not add tags while IME composition is active', () => {
