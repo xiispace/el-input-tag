@@ -6,7 +6,7 @@ on:
       - published
   push:
     branches:
-      - master
+      - main
     paths:
       - package.json
 
