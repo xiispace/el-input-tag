@@ -17,17 +17,20 @@
       v-if="!readOnly"
       class="tag-input"
       :placeholder="placeholder"
-      @input="inputTag"
       :value="newTag"
-      @keydown.delete.stop = "removeLastTag"
-      @keydown = "addNew"
-      @blur = "addNew"/>
+      @input="inputTag"
+      @compositionstart="isComposing = true"
+      @compositionend="compositionEnd"
+      @keydown.delete.stop="removeLastTag"
+      @keydown="addNew"
+      @blur="addNew"/>
   </div>
 </template>
 
 <script>
 export default {
   name: 'ElInputTag',
+  inheritAttrs: false,
   props: {
     value: {
       type: Array,
@@ -43,11 +46,20 @@ export default {
     },
     size: String,
     placeholder: String,
+    transformTag: {
+      type: Function,
+      default: tag => tag
+    },
+    validateTag: {
+      type: Function,
+      default: () => true
+    }
   },
   data () {
     return {
       newTag: '',
-      innerTags: [...this.value]
+      innerTags: [...this.value],
+      isComposing: false
     }
   },
   watch: {
@@ -63,14 +75,21 @@ export default {
         this.$el.querySelector('.tag-input').focus()
       }
     },
-    inputTag(ev) {
-        this.newTag = ev.target.value
+    inputTag (ev) {
+      this.newTag = ev.target.value
+    },
+    compositionEnd (ev) {
+      this.isComposing = false
+      this.inputTag(ev)
     },
     addNew (e) {
+      if (this.isComposing) {
+        return
+      }
       if (e && (!this.addTagOnKeys.includes(e.keyCode)) && (e.type !== 'blur')) {
         return
       }
-      if (e) {
+      if (e && e.type === 'keydown') {
         e.stopPropagation()
         e.preventDefault()
       }
@@ -93,8 +112,20 @@ export default {
     },
     addTag (tag) {
       tag = tag.trim()
-      if (tag && !this.innerTags.includes(tag)) {
-        this.innerTags.push(tag)
+      if (!tag) {
+        return false
+      }
+      if (!this.validateTag(tag, this.innerTags)) {
+        this.$emit('invalid', tag)
+        return false
+      }
+      const transformedTag = this.transformTag(tag, this.innerTags)
+      if (transformedTag === undefined || transformedTag === null) {
+        this.$emit('invalid', tag)
+        return false
+      }
+      if (!this.innerTags.includes(transformedTag)) {
+        this.innerTags.push(transformedTag)
         return true
       }
       return false
@@ -104,7 +135,7 @@ export default {
       this.tagChange()
     },
     removeLastTag () {
-      if (this.newTag) {
+      if (this.newTag || !this.innerTags.length) {
         return
       }
       this.innerTags.pop()
