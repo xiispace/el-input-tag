@@ -21,15 +21,16 @@
       @input="inputTag"
       @compositionstart="isComposing = true"
       @compositionend="compositionEnd"
-      @keydown.delete.stop = "removeLastTag"
-      @keydown = "addNew"
-      @blur = "addNew"/>
+      @keydown.delete.stop="removeLastTag"
+      @keydown="addNew"
+      @blur="addNew"/>
   </div>
 </template>
 
 <script>
 export default {
   name: 'ElInputTag',
+  inheritAttrs: false,
   props: {
     value: {
       type: Array,
